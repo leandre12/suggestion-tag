@@ -16,6 +16,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.svm import LinearSVC
 from sklearn.model_selection import train_test_split
+from gensim.models.coherencemodel import CoherenceModel
+from gensim.models.ldamulticore import LdaMulticore
 # nltk.download('punkt')
 # nltk.download('stopwords')
 # nltk.download('wordnet')
@@ -147,7 +149,37 @@ def trainModel(choiceModel, X_data, y_data):
     if choiceModel == 'KNN' :       
         clf = KNeighborsClassifier()        
     else :
-        clf = SGDClassifier(random_state=1, max_iter=5, tol=1e-3)
+        clf = LogisticRegression(random_state=1, max_iter=5, tol=1e-3)
         
     clf_fit = MultiOutputClassifier(clf).fit(X_train, y_train)
     return clf_fit
+
+def compute_coherence_values(dictionary, corpus, texts, limit, start=2, step=3):
+    """
+    Compute c_v coherence for various number of topics
+
+    Parameters:
+    ----------
+    dictionary : Gensim dictionary
+    corpus : Gensim corpus
+    texts : List of input texts
+    limit : Max num of topics
+
+    Returns:
+    -------
+    model_list : List of LDA topic models
+    coherence_values : Coherence values corresponding to the LDA model
+    with respective number of topics
+    """
+    coherence_values = []
+    model_list = []
+    for num_topics in range(start, limit, step):
+        model = LdaMulticore(corpus=corpus, id2word=dictionary,
+                             num_topics=num_topics)
+        model_list.append(model)
+        coherencemodel = CoherenceModel(model=model, texts=texts,
+                                        dictionary=dictionary,
+                                        coherence='c_v')
+        coherence_values.append(coherencemodel.get_coherence())
+
+    return model_list, coherence_values
