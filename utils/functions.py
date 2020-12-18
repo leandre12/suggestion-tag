@@ -183,3 +183,10 @@ def compute_coherence_values(dictionary, corpus, texts, limit, start=2, step=3):
         coherence_values.append(coherencemodel.get_coherence())
 
     return model_list, coherence_values
+
+def print_topics(model, count_vectorizer, n_top_words):
+    words = count_vectorizer.get_feature_names ()
+    for topic_idx, topic in enumerate(model.components_):
+        print("Topic #% d:"% topic_idx)
+        print(" " .join ([words [i] 
+                        for i in topic.argsort () [: - n_top_words - 1: -1]]))
