@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>P5 : suggestion des tags</title>
+<style>
+* {
+  box-sizing: border-box;
+}
+div.head {
+  text-align: center;
+}
+/* Create two columns that floats next to each other */
+.column1 {
+  float: left;
+  width: 20%;
+  padding: 5rem 1rem 10rem;
+  background-color: rgb(240, 242, 246);
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+.column2 {
+  float: left;
+  width: 80%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+</head>
+<body>
+
+<div class="head">
+	<h1>Suggestion des tags pour stackoverflow </h1>
+</div>
+
+<div class="row">
+  <div class="column1" style="background-color:#aaa;">
+    <h2>Utilisateur :</h2>
+    <p>Léandre ANDRIANIANA</p>
+  </div>
+  <div class="column2" style="background-color:#bbb;">
+    <h2>Saisie des questions</h2>
+
+	<form action ="#" method ="post">
+	<label for="requete">Merci de saisir votre question :</label>
+	<textarea id="requete" name="requete" rows="4" cols="50">
+	  
+	  </textarea>
+	  <br><br>
+	  <input type="submit" value="Rechercher les tags">
+	</form>
+
+  </div>
+</div>
+
+</body>
+</html>
