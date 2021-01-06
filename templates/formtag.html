@@ -9,19 +9,26 @@
 div.head {
   text-align: center;
 }
+body {
+  background-color: dimgrey;
+}
 /* Create two columns that floats next to each other */
 .column1 {
   float: left;
   width: 20%;
   padding: 5rem 1rem 10rem;
   background-color: rgb(240, 242, 246);
-  height: 300px; /* Should be removed. Only for demonstration */
+  height: 350px;
+  border-top-left-radius: 10px 10px;
+  border-bottom-left-radius: 10px 10px;
 }
 .column2 {
   float: left;
   width: 80%;
   padding: 10px;
-  height: 300px; /* Should be removed. Only for demonstration */
+  height: 350px;
+  border-top-right-radius: 10px 10px;
+  border-bottom-right-radius: 10px 10px;
 }
 /* Clear floats after the columns */
 .row:after {
@@ -39,19 +46,19 @@ div.head {
 
 <div class="row">
   <div class="column1" style="background-color:#aaa;">
-    <h2>Utilisateur :</h2>
+    <h2>Auteur :</h2>
     <p>Léandre ANDRIANIANA</p>
   </div>
   <div class="column2" style="background-color:#bbb;">
-    <h2>Saisie des questions</h2>
+    <h2>Recherche des tags :</h2>
 
 	<form action ="#" method ="post">
 	<label for="requete">Merci de saisir votre question :</label>
 	<textarea id="requete" name="requete" rows="4" cols="50">
-	  
+
 	  </textarea>
 	  <br><br>
-	  <input type="submit" value="Rechercher les tags">
+	  <input type="submit" value="submit">
 	</form>
 
   </div>

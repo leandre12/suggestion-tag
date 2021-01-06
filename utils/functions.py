@@ -24,7 +24,7 @@ from gensim.models.ldamulticore import LdaMulticore
 
 def custom_tokenize(text):
     if not text:
-        print('The text to be tokenized is a None type. Defaulting to blank string.')
+        # print('The text to be tokenized is a None type. Defaulting to blank string.')
         text = ''
     return nltk.word_tokenize(text)
 
